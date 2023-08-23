@@ -17,12 +17,12 @@ enum ClipDecoratorType {
 ///
 /// {@category Decorators}
 class ClipDecorator extends ParentDecorator<ClipDecorator> {
-  final BorderRadius? borderRadius;
+  final BorderRadius borderRadius;
   final ClipDecoratorType clipType;
 
   const ClipDecorator(
     this.clipType, {
-    this.borderRadius,
+    this.borderRadius = BorderRadius.zero,
   }) : super(const Key('ClipDecorator'));
 
   @override
@@ -52,7 +52,7 @@ class ClipDecorator extends ParentDecorator<ClipDecorator> {
         return AnimatedClipRRect(
           duration: shared.animationDuration,
           curve: shared.animationCurve,
-          borderRadius: borderRadius ?? BorderRadius.circular(0),
+          borderRadius: borderRadius,
           child: child,
         );
       } else {
